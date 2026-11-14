@@ -40,6 +40,7 @@ targets:
         CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]: Config/Brainwave-iOS.entitlements
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: Brainwave
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.healthcare-fitness
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: Brainwave saves your calm sessions to Apple Health as Mindful Minutes, if you allow it.
         INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: Brainwave connects to your Muse headband over Bluetooth to show your brain activity.
