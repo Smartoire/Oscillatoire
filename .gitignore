@@ -1,0 +1,34 @@
+.DS_Store
+xcuserdata/
+DerivedData/
+build/
+.build/
+.swiftpm/
+# Interaxon Muse SDK: licence forbids redistribution. Build locally with tools/setup_muse_sdk.sh
+Vendor/
+Muse SDK*/
+Muse SDK*.zip
+Brainwave.xcodeproj/
+# Binaries are not published. Generate them locally (see README "Build"):
+*.usdz
+*.bin
+*.mesh
+*.webp
+*.jpg
+*.zip
+*.xcframework/
+App/Assets.xcassets/**/*.png
+
+# Infisical project link (holds only the project ID, no secrets)
+.infisical.json
+
+# Android: the Muse SDK and local build output are never committed
+android/app/libs/
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/app/src/main/jniLibs/
+
+# Kotlin compiler cache
+.kotlin/

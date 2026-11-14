@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launch theme: a plain dark background with no logo, so only the animated start screen in the app shows. -->
+    <style name="Theme.Brainwave.Splash" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/transparent_icon</item>
+    </style>
+</resources>
