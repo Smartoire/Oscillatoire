@@ -16,6 +16,26 @@ android {
         versionName '1.0'
     }
 
+    // Release signing reads the keystore from the user's ~/.gradle/gradle.properties. Nothing secret lives in the repo.
+    signingConfigs {
+        release {
+            if (project.hasProperty('BRAINWAVE_STORE_FILE')) {
+                storeFile file(BRAINWAVE_STORE_FILE)
+                storePassword BRAINWAVE_STORE_PASSWORD
+                keyAlias BRAINWAVE_KEY_ALIAS
+                keyPassword BRAINWAVE_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (project.hasProperty('BRAINWAVE_STORE_FILE')) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
     buildFeatures { compose true }
 
     compileOptions {

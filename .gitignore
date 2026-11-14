@@ -32,3 +32,8 @@ android/app/src/main/jniLibs/
 
 # Kotlin compiler cache
 .kotlin/
+
+# Signing keys and passwords: never commit
+*.jks
+*.keystore
+keystore.properties
