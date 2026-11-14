@@ -62,18 +62,23 @@ func drawIcon(_ ctx: CGContext, side: CGFloat) {
 }
 
 /// Writes a `side`×`side` opaque PNG (App Store icons must have no transparency).
-func writePNG(side: Int, to path: String) {
+func writePNG(side: Int, to path: String, opaque: Bool = false) {
     let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: side, pixelsHigh: side, bitsPerSample: 8,
                                samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: .deviceRGB,
                                bytesPerRow: 0, bitsPerPixel: 0)!
     NSGraphicsContext.saveGraphicsState()
     NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
+    if opaque {
+        // App icons get a solid background: the bitmap keeps an alpha channel, so fill it first.
+        NSColor.white.setFill()
+        NSRect(x: 0, y: 0, width: side, height: side).fill()
+    }
     drawIcon(NSGraphicsContext.current!.cgContext, side: CGFloat(side))
     NSGraphicsContext.restoreGraphicsState()
     try! rep.representation(using: .png, properties: [:])!.write(to: URL(fileURLWithPath: path))
 }
 
-writePNG(side: 1024, to: outDir + "icon.png")
-writePNG(side: 512, to: outDir + "icon-512.png")
+writePNG(side: 1024, to: outDir + "icon.png", opaque: true)
+writePNG(side: 512, to: outDir + "icon-512.png", opaque: true)
 writePNG(side: 512, to: "App/Assets.xcassets/BrandMark.imageset/brand-mark.png")  // in-app logo
-print("icons written")
+print("icons written; then flatten the app icons to RGB: python3 tools/flatten_icons.py")

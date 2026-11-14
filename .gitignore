@@ -18,6 +18,7 @@ Brainwave.xcodeproj/
 *.zip
 *.xcframework/
 App/Assets.xcassets/**/*.png
+!App/Assets.xcassets/**/*.png
 
 # Infisical project link (holds only the project ID, no secrets)
 .infisical.json
